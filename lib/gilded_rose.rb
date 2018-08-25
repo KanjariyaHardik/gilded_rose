@@ -68,7 +68,7 @@ class GildedRose
           end
         end
       else
-        item.update_quality
+        item.update
       end
     end
   end
