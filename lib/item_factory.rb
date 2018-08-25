@@ -1,6 +1,12 @@
 require_relative 'item'
- class ItemFactory
+require_relative 'conjured_item'
+
+class ItemFactory
   def create( name, sell_in, quality )
-    Item.new name, sell_in, quality
+    if name.start_with? 'Conjured'
+      ConjuredItem.new name, sell_in, quality
+    else
+      Item.new name, sell_in, quality
+    end
   end
 end
