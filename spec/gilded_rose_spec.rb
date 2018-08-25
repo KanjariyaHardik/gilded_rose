@@ -1,4 +1,5 @@
 require_relative '../lib/gilded_rose'
+require_relative '../item_factory'
 
 describe 'GildedRose' do
   subject { GildedRose.new }
@@ -125,10 +126,8 @@ describe 'GildedRose' do
         it "should reduce quality by 2 on update_quality" do
           expect{ subject.update_quality }.to change{conjured.quality}.by(-2)
         end
-
       end
   end
-
 end
 
 describe 'Item' do
@@ -137,5 +136,12 @@ describe 'Item' do
   it { should respond_to(:name) }
   it { should respond_to(:sell_in) }
   it { should respond_to(:quality) }
+end
 
+describe 'ItemFactory' do
+  subject { ItemFactory.new }
+  it { should respond_to(:create) }
+   it "creates a basic item" do
+    expect(subject.create "name", 10, 15).to be_kind_of(Item)
+  end
 end
